@@ -19,6 +19,7 @@
 /bundles/org.openhab.binding.airparif/ @clinique
 /bundles/org.openhab.binding.airq/ @aurelio1 @fwolter
 /bundles/org.openhab.binding.airquality/ @openhab/add-ons-maintainers
+/bundles/org.openhab.binding.airtouch4/ @netwolfuk
 /bundles/org.openhab.binding.airvisualnode/ @3cky
 /bundles/org.openhab.binding.alarmdecoder/ @bobadair @billfor
 /bundles/org.openhab.binding.allplay/ @dominicdesu

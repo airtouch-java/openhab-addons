@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="airtouch"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+	xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0 https://openhab.org/schemas/thing-description-1.0.0.xsd">
+
+	<!-- Sample Thing Type -->
+	<thing-type id="airtouch4-controller">
+		<label>AirTouch4 Controller</label>
+		<description>Polyaire AirTouch Controller device - version 4</description>
+		<config-description-ref uri="thing-type:airtouch:config"/>
+	</thing-type>
+
+	<channel-group-type id="airconditioner">
+		<label>Air Conditioner</label>
+	</channel-group-type>
+	<!-- Sample Channel Type -->
+	<channel-type id="airconditioner-unit-temperature">
+		<item-type>Number:Temperature</item-type>
+		<label>AC Unit Temperature</label><!-- Use uppercase words, except prepositions. 2-3 words, max 25 chars -->
+		<description>The temperature as measured by the Air-Conditioning unit. Typically read via a return in-take or similar.</description>
+		<state step="1" pattern="%d °C" readOnly="true"/>
+	</channel-type>
+	<channel-type id="airconditioner-unit-power">
+		<item-type>Switch</item-type>
+		<label>AC Unit Power</label><!-- Use uppercase words, except prepositions. 2-3 words, max 25 chars -->
+		<description>The Power state of the Air-Conditioning unit.</description>
+	</channel-type>
+	<channel-type id="airconditioner-unit-setpoint">
+		<item-type>Number:Temperature</item-type>
+		<label>AC Unit Setpoint Temperature</label><!-- Use uppercase words, except prepositions. 2-3 words, max 25 chars -->
+		<description>The temperature setpoint for the AC Unit.</description>
+		<category>Temperature</category>
+		<tags>
+			<tag>Temperature</tag>
+			<tag>Setpoint</tag>
+		</tags>
+		<state step="1" pattern="%d °C" readOnly="false"/>
+	</channel-type>
+	<channel-type id="airconditioner-unit-mode">
+		<item-type>String</item-type>
+		<label>AC Unit Mode</label><!-- Use uppercase words, except prepositions. 2-3 words, max 25 chars -->
+		<description>The Mode of the Air-Conditioning unit. (HEAT,COOL,AUTO,etc)</description>
+	</channel-type>
+	<channel-type id="airconditioner-unit-fanspeed">
+		<item-type>String</item-type>
+		<label>AC Unit Fan Speed</label><!-- Use uppercase words, except prepositions. 2-3 words, max 25 chars -->
+		<description>The Fan Speed of the Air-Conditioning unit. (LOW,MEDIUM,HIGH,AUTO,etc)</description>
+	</channel-type>
+	<channel-type id="airconditioner-unit-spill">
+		<item-type>Switch</item-type>
+		<label>AC Unit Spill</label><!-- Use uppercase words, except prepositions. 2-3 words, max 25 chars -->
+		<description>Whether the Air-Conditioning unit is in spill.</description>
+		<state readOnly="true"/>
+	</channel-type>
+	<channel-type id="airconditioner-unit-timer">
+		<item-type>Switch</item-type>
+		<label>AC Unit Timer</label><!-- Use uppercase words, except prepositions. 2-3 words, max 25 chars -->
+		<description>Whether the Air-Conditioning unit has a Timer activated.</description>
+		<state readOnly="true"/>
+	</channel-type>
+
+	<channel-group-type id="airconditioner-zone">
+		<label>Air Conditioner Zone</label>
+	</channel-group-type>
+	<!-- Sample Channel Type -->
+	<channel-type id="airconditioner-zone-temperature">
+		<item-type>Number:Temperature</item-type>
+		<label>Zone Temperature</label><!-- Use uppercase words, except prepositions. 2-3 words, max 25 chars -->
+		<description>The temperature as measured by the Zone. Typically read via a device located in the room.</description>
+		<category>Temperature</category>
+		<tags>
+			<tag>Temperature</tag>
+			<tag>Measurement</tag>
+		</tags>
+		<state step="1" pattern="%d °C" readOnly="true"/>
+	</channel-type>
+	<channel-type id="airconditioner-zone-setpoint">
+		<item-type>Number:Temperature</item-type>
+		<label>Zone Setpoint Temperature</label><!-- Use uppercase words, except prepositions. 2-3 words, max 25 chars -->
+		<description>The temperature setpoint for the Zone.</description>
+		<category>Temperature</category>
+		<tags>
+			<tag>Temperature</tag>
+			<tag>Setpoint</tag>
+		</tags>
+		<state step="1" pattern="%d °C" readOnly="false"/>
+	</channel-type>
+	<channel-type id="airconditioner-zone-battery-low">
+		<item-type>Switch</item-type>
+		<label>Zone Setpoint Temperature</label><!-- Use uppercase words, except prepositions. 2-3 words, max 25 chars -->
+		<description>The temperature setpoint for the Zone.</description>
+		<category>LowBattery</category>
+	</channel-type>
+	<channel-type id="airconditioner-zone-flow">
+		<item-type>Number:Dimensionless</item-type>
+		<label>Zone AirFlow</label><!-- Use uppercase words, except prepositions. 2-3 words, max 25 chars -->
+		<description>The Zone Flow (percentage damper open).</description>
+		<category>Slider</category>
+		<state min="5" max="100" step="5" pattern="%d %%" readOnly="false"/>
+	</channel-type>
+	<channel-type id="airconditioner-zone-power">
+		<item-type>Switch</item-type>
+		<label>Zone Power</label><!-- Use uppercase words, except prepositions. 2-3 words, max 25 chars -->
+		<description>The state of the Zone.</description>
+		<category>Switch</category>
+		<tags>
+			<tag>Switch</tag>
+			<tag>Power</tag>
+		</tags>
+	</channel-type>
+</thing:thing-descriptions>

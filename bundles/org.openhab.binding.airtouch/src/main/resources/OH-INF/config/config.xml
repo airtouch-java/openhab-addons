@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config-description:config-descriptions
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:config-description="https://openhab.org/schemas/config-description/v1.0.0"
+	xsi:schemaLocation="https://openhab.org/schemas/config-description/v1.0.0 https://openhab.org/schemas/config-description-1.0.0.xsd">
+
+	<config-description uri="thing-type:airtouch:config">
+
+		<parameter name="host" type="text" required="true">
+			<context>network-address</context>
+			<label>AirTouch Host</label>
+			<description>Hostname or IP address of the AirTouch device</description>
+		</parameter>
+
+		<parameter name="port" type="integer" min="0" max="65535">
+			<label>AirTouch Port</label>
+			<description>Port to connect to the AirTouch device</description>
+			<default>9004</default>
+			<advanced>true</advanced>
+		</parameter>
+
+		<parameter name="refreshInterval" type="integer" unit="s" min="10">
+			<label>Refresh Interval</label>
+			<description>How often the device is polled (seconds). Airtouch status changes are
+				normally received instantly. This
+				value controls how often the binding requests an update.
+			</description>
+			<default>60</default>
+			<advanced>true</advanced>
+		</parameter>
+
+	</config-description>
+</config-description:config-descriptions>
