@@ -175,6 +175,12 @@ public class AirTouch4Handler extends BaseThingHandler implements AirTouchServic
                     this.airtouch4Service.sendRequest(AirConditionerControlHandler.requestBuilder(unitNumber)
                             .setpointControl(SetpointControl.SET_TO_VALUE).setpointValue(setpointValue)
                             .build(this.airtouch4Service.getNextRequestId()));
+                } else if (command instanceof DecimalType) {
+                    int setpointValue = ((DecimalType) command).intValue();
+                    this.airtouch4Service.validateZoneSetpoint(unitNumber, setpointValue);
+                    this.airtouch4Service.sendRequest(AirConditionerControlHandler.requestBuilder(unitNumber)
+                            .setpointControl(SetpointControl.SET_TO_VALUE).setpointValue(setpointValue)
+                            .build(this.airtouch4Service.getNextRequestId()));
                 }
                 break;
             case CHANNELUID_AIRCONDITIONER_UNIT_MODE:
@@ -208,6 +214,13 @@ public class AirTouch4Handler extends BaseThingHandler implements AirTouchServic
             case CHANNELUID_AIRCONDITIONER_ZONE_SETPOINT:
                 if (command instanceof QuantityType) {
                     int setpointValue = ((QuantityType<?>) command).intValue();
+                    this.airtouch4Service.validateZoneSetpoint(zoneNumber, setpointValue);
+                    this.airtouch4Service.sendRequest(
+                            GroupControlHandler.requestBuilder(zoneNumber).setting(ZoneSetting.SET_TARGET_SETPOINT)
+                                    .settingValue(setpointValue).build(this.airtouch4Service.getNextRequestId()));
+                }
+                if (command instanceof DecimalType) {
+                    int setpointValue = ((DecimalType) command).intValue();
                     this.airtouch4Service.validateZoneSetpoint(zoneNumber, setpointValue);
                     this.airtouch4Service.sendRequest(
                             GroupControlHandler.requestBuilder(zoneNumber).setting(ZoneSetting.SET_TARGET_SETPOINT)
