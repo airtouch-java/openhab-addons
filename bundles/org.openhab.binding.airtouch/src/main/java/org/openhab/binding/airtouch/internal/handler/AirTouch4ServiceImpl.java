@@ -162,8 +162,7 @@ public class AirTouch4ServiceImpl implements AirTouchService<MessageConstants.Ad
 
     @Override
     public void start(@Nullable String host, int port) {
-        this.airtouchConnector = new AirtouchConnector<>(threadFactory, host, port,
-                this::handleEvent);
+        this.airtouchConnector = new AirtouchConnector<>(threadFactory, host, port, this::handleEvent);
         this.airtouchConnector.start();
     }
 
