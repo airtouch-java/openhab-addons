@@ -19,7 +19,6 @@ import org.slf4j.LoggerFactory;
 
 import airtouch.Request;
 import airtouch.Response;
-import airtouch.ResponseCallback;
 import airtouch.connector.AirtouchConnector;
 import airtouch.connector.AirtouchConnectorThreadFactory;
 import airtouch.constant.AirConditionerControlConstants.Mode;
@@ -163,12 +162,8 @@ public class AirTouch4ServiceImpl implements AirTouchService<MessageConstants.Ad
 
     @Override
     public void start(@Nullable String host, int port) {
-        this.airtouchConnector = new AirtouchConnector<MessageConstants.Address>(threadFactory, host, port,
-                new ResponseCallback() {
-                    public void handleResponse(@Nullable Response response) {
-                        handleEvent(response);
-                    }
-                });
+        this.airtouchConnector = new AirtouchConnector<>(threadFactory, host, port,
+                this::handleEvent);
         this.airtouchConnector.start();
     }
 

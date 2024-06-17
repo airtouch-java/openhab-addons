@@ -46,9 +46,8 @@ import org.slf4j.LoggerFactory;
  * <li>A cache to handle StateDescriptionFragments as created by our Handler.
  * </ol>
  * A StateDescriptionFragment is a partially filled in StateDescription.
- * When our Handler creates the channels, it also assembles StateDescriptionFragments for states that require modication
- * after
- * reading the AirTouch config.
+ * When our Handler creates the channels, it also assembles StateDescriptionFragments for states that require
+ * modification after reading the AirTouch config.
  * <p>
  * These StateDescriptionFragments are stored inside this service. When OpenHab later asks for a StateDescription, it
  * passes in the one
