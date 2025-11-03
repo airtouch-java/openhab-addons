@@ -64,7 +64,7 @@ public class AirTouchDiscoveryService extends AbstractDiscoveryService
                     airtouch.getAirtouchId());
             ThingUID thingUID = getThingUID(airtouch);
             logger.info("ThingUID is: '{}'", thingUID);
-            Map<String, Object> properties = new HashMap<>(1);
+            Map<String, Object> properties = HashMap.newHashMap(1);
             properties.put(PROPERTY_AIRTOUCH_ID, airtouch.getAirtouchId());
             properties.put(PROPERTY_AIRTOUCH_HOST, airtouch.getHostAddress());
             properties.put(PROPERTY_AIRTOUCH_PORT, airtouch.getPortNumber());

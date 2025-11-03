@@ -33,7 +33,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * The {@link AirTouch4HandlerFactory} is responsible for creating things and thing
+ * The {@link AirTouchHandlerFactory} is responsible for creating things and thing
  * handlers.
  *
  * @author Nathaniel Wolfe - Initial contribution
