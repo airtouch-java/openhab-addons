@@ -38,6 +38,7 @@ class AirTouch4HandlerTest {
     private AirTouch4Handler handler;
     private ArgumentCaptor<Request<MessageConstants.Address>> requestCaptor;
 
+    @SuppressWarnings("unchecked")
     @BeforeEach
     public void setupClass() {
         when(airTouch4Service.getNextRequestId()).thenReturn(100);

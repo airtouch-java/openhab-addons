@@ -57,8 +57,8 @@ import org.slf4j.LoggerFactory;
  * <p>
  * So, we read the StateDescriptionFragment from our cache and then build a new StateDescription by merging the passed
  * in StateDescription
- * and our StateDescriptionFragment. We then store this merged StateDescription in another cache or quick retrieval next
- * time.
+ * and our StateDescriptionFragment. We then store this merged StateDescription in another cache for quick retrieval
+ * next time.
  *
  * @see #getStateDescription(Channel, StateDescription, Locale)
  * @see #putStateDescriptionFragmentInCache(Channel, StateDescriptionFragment)
