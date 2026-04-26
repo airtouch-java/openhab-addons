@@ -73,28 +73,28 @@ import airtouch.exception.AirtouchMessagingException;
 import airtouch.model.AirConditionerAbilityResponse;
 import airtouch.model.AirConditionerStatusResponse;
 import airtouch.model.ZoneStatusResponse;
-import airtouch.v4.constant.MessageConstants;
-import airtouch.v4.handler.AirConditionerControlHandler;
-import airtouch.v4.handler.GroupControlHandler;
+import airtouch.v5.constant.MessageConstants;
+import airtouch.v5.handler.AirConditionerControlHandler;
+import airtouch.v5.handler.ZoneControlHandler;
 import tech.units.indriya.unit.Units;
 
 /**
- * The {@link AirTouch4Handler} is responsible for handling commands, which are
+ * The {@link AirTouch5Handler} is responsible for handling commands, which are
  * sent to one of the channels.
  *
  * @author Nathaniel Wolfe - Initial contribution
  */
 @NonNullByDefault
-public class AirTouch4Handler extends BaseThingHandler implements AirTouchServiceListener {
+public class AirTouch5Handler extends BaseThingHandler implements AirTouchServiceListener {
 
-    private final Logger logger = LoggerFactory.getLogger(AirTouch4Handler.class);
+    private final Logger logger = LoggerFactory.getLogger(AirTouch5Handler.class);
 
     private final AirTouchService<MessageConstants.Address> airtouch4Service;
     private final AirTouchStateDescriptionFragmentCache stateDescriptionFragmentCache;
 
     private @Nullable ScheduledFuture<?> future;
 
-    public AirTouch4Handler(Thing thing, AirTouchService<MessageConstants.Address> airTouch4Service,
+    public AirTouch5Handler(Thing thing, AirTouchService<MessageConstants.Address> airTouch4Service,
             AirTouchStateDescriptionFragmentCache stateDescriptionFragmentCache) {
         super(thing);
         this.airtouch4Service = airTouch4Service;
@@ -202,12 +202,12 @@ public class AirTouch4Handler extends BaseThingHandler implements AirTouchServic
             case CHANNELUID_AIRCONDITIONER_ZONE_POWER:
                 if (command instanceof OnOffType) {
                     ZonePower zonePowerState = convertToZonePower((OnOffType) command);
-                    this.airtouch4Service.sendRequest(GroupControlHandler.requestBuilder(zoneNumber)
+                    this.airtouch4Service.sendRequest(ZoneControlHandler.requestBuilder(zoneNumber)
                             .power(zonePowerState).build(this.airtouch4Service.getNextRequestId()));
                 } else if (command instanceof StringType) {
                     ZonePower zonePowerState = convertToZonePower((StringType) command);
                     this.airtouch4Service.validateZonePowerState(zoneNumber, zonePowerState);
-                    this.airtouch4Service.sendRequest(GroupControlHandler.requestBuilder(zoneNumber)
+                    this.airtouch4Service.sendRequest(ZoneControlHandler.requestBuilder(zoneNumber)
                             .power(zonePowerState).build(this.airtouch4Service.getNextRequestId()));
                 }
                 break;
@@ -216,14 +216,14 @@ public class AirTouch4Handler extends BaseThingHandler implements AirTouchServic
                     int setpointValue = ((QuantityType<?>) command).intValue();
                     this.airtouch4Service.validateZoneSetpoint(zoneNumber, setpointValue);
                     this.airtouch4Service.sendRequest(
-                            GroupControlHandler.requestBuilder(zoneNumber).setting(ZoneSetting.SET_TARGET_SETPOINT)
+                            ZoneControlHandler.requestBuilder(zoneNumber).setting(ZoneSetting.SET_TARGET_SETPOINT)
                                     .settingValue(setpointValue).build(this.airtouch4Service.getNextRequestId()));
                 }
                 if (command instanceof DecimalType) {
                     int setpointValue = ((DecimalType) command).intValue();
                     this.airtouch4Service.validateZoneSetpoint(zoneNumber, setpointValue);
                     this.airtouch4Service.sendRequest(
-                            GroupControlHandler.requestBuilder(zoneNumber).setting(ZoneSetting.SET_TARGET_SETPOINT)
+                            ZoneControlHandler.requestBuilder(zoneNumber).setting(ZoneSetting.SET_TARGET_SETPOINT)
                                     .settingValue(setpointValue).build(this.airtouch4Service.getNextRequestId()));
                 }
                 break;

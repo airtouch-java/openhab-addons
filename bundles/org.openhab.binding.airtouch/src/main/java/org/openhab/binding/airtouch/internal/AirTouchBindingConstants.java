@@ -26,17 +26,21 @@ public class AirTouchBindingConstants {
 
     public static final String BINDING_ID = "airtouch";
     public static final String AIRTOUCH4_CONTROLLER = "airtouch4-controller";
+    public static final String AIRTOUCH5_CONTROLLER = "airtouch5-controller";
 
     // List of all Thing Type UIDs
     public static final ThingTypeUID AIRTOUCH4_CONTROLLER_THING_TYPE = new ThingTypeUID(BINDING_ID,
             AIRTOUCH4_CONTROLLER);
+    public static final ThingTypeUID AIRTOUCH5_CONTROLLER_THING_TYPE = new ThingTypeUID(BINDING_ID,
+            AIRTOUCH5_CONTROLLER);
 
     public static final int DISCOVERY_SCAN_TIMEOUT_SECONDS = 30;
 
     public static final String PROPERTY_AIRTOUCH_HOST = "host";
     public static final String PROPERTY_AIRTOUCH_PORT = "port";
     public static final String PROPERTY_AIRTOUCH_REFRESH_INTERVAL = "refreshInterval";
-    public static final String PROPERTY_AIRTOUCH_ID = "AirTouchConsoleId";
+    public static final String PROPERTY_AIRTOUCH_ID = "AirTouchId";
+    public static final String PROPERTY_AIRTOUCH_CONSOLE_ID = "AirTouchConsoleId";
     public static final String PROPERTY_AIRTOUCH_UID = "AirTouchUid";
     public static final String PROPERTY_AIRTOUCH_MAC_ADDRESS = "AirTouchMacAddress";
     public static final String PROPERTY_AIRTOUCH_VERSION = "AirTouchVersion";

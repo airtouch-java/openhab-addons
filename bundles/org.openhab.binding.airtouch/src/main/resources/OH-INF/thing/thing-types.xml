@@ -4,11 +4,15 @@
 	xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
 	xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0 https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
-	<!-- Sample Thing Type -->
 	<thing-type id="airtouch4-controller">
 		<label>AirTouch4 Controller</label>
 		<description>Polyaire AirTouch Controller device - version 4</description>
 		<config-description-ref uri="thing-type:airtouch:config"/>
+	</thing-type>
+	<thing-type id="airtouch5-controller">
+		<label>AirTouch5 Controller</label>
+		<description>Polyaire AirTouch Controller device - version 5</description>
+		<config-description-ref uri="thing-type:airtouch5:config"/>
 	</thing-type>
 
 	<channel-group-type id="airconditioner">

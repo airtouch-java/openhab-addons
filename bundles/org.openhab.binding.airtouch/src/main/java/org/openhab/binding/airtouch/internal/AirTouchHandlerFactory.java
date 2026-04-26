@@ -20,6 +20,8 @@ import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.jdt.annotation.Nullable;
 import org.openhab.binding.airtouch.internal.handler.AirTouch4Handler;
 import org.openhab.binding.airtouch.internal.handler.AirTouch4ServiceImpl;
+import org.openhab.binding.airtouch.internal.handler.AirTouch5Handler;
+import org.openhab.binding.airtouch.internal.handler.AirTouch5ServiceImpl;
 import org.openhab.binding.airtouch.internal.handler.AirTouchService;
 import org.openhab.core.thing.Thing;
 import org.openhab.core.thing.ThingTypeUID;
@@ -44,7 +46,8 @@ public class AirTouchHandlerFactory extends BaseThingHandlerFactory {
 
     private final Logger logger = LoggerFactory.getLogger(AirTouchHandlerFactory.class);
     private final AirTouchDynamicStateDescriptionProvider dynamicStateDescriptionProvider;
-    private static final Set<ThingTypeUID> SUPPORTED_THING_TYPES_UIDS = Set.of(AIRTOUCH4_CONTROLLER_THING_TYPE);
+    private static final Set<ThingTypeUID> SUPPORTED_THING_TYPES_UIDS = Set.of(AIRTOUCH4_CONTROLLER_THING_TYPE,
+            AIRTOUCH5_CONTROLLER_THING_TYPE);
 
     @Activate
     public AirTouchHandlerFactory(@Reference AirTouchDynamicStateDescriptionProvider dynamicStateDescriptionProvider) {
@@ -64,6 +67,11 @@ public class AirTouchHandlerFactory extends BaseThingHandlerFactory {
             logger.debug("Creating AirTouchAirConditionerHandler for '{}'", thing.getThingTypeUID());
             AirTouchService<airtouch.v4.constant.MessageConstants.Address> airTouch4Service = new AirTouch4ServiceImpl();
             return new AirTouch4Handler(thing, airTouch4Service, this.dynamicStateDescriptionProvider);
+        }
+        if (AIRTOUCH5_CONTROLLER_THING_TYPE.equals(thingTypeUID)) {
+            logger.debug("Creating AirTouchAirConditionerHandler for '{}'", thing.getThingTypeUID());
+            AirTouchService<airtouch.v5.constant.MessageConstants.Address> airTouch4Service = new AirTouch5ServiceImpl();
+            return new AirTouch5Handler(thing, airTouch4Service, this.dynamicStateDescriptionProvider);
         }
 
         return null;
