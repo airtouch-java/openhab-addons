@@ -18,7 +18,7 @@
     <dependency>
       <groupId>io.github.airtouch-java</groupId>
       <artifactId>airtouch-utils</artifactId>
-      <version>1.5.3</version>
+      <version>1.5.5</version>
     </dependency>
   </dependencies>
 
