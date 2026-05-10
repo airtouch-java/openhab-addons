@@ -41,7 +41,7 @@ public class AirTouchDiscoveryService extends AbstractDiscoveryService
     private AirtouchDiscoverer airtouch4Broadcaster;
     private AirtouchDiscoverer airtouch5Broadcaster;
     private String scanInputLabel = "AirTouch Version to discover";
-    private String scanInputDescription = "Must be one of '4' or '5' (withouth quotes)";
+    private String scanInputDescription = "Must be one of '4' or '5' (without quotes)";
 
     public AirTouchDiscoveryService() {
         super(Set.of(AIRTOUCH4_CONTROLLER_THING_TYPE, AIRTOUCH5_CONTROLLER_THING_TYPE),
