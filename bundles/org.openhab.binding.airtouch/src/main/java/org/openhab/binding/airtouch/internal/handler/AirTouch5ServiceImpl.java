@@ -32,8 +32,8 @@ import airtouch.v5.constant.MessageConstants;
 import airtouch.v5.handler.AirConditionerAbilityHandler;
 import airtouch.v5.handler.AirConditionerStatusHandler;
 import airtouch.v5.handler.ConsoleVersionHandler;
-import airtouch.v5.handler.ZoneControlHandler;
 import airtouch.v5.handler.ZoneNameHandler;
+import airtouch.v5.handler.ZoneStatusHandler;
 
 @NonNullByDefault
 public class AirTouch5ServiceImpl implements AirTouchService<MessageConstants.Address> {
@@ -67,7 +67,7 @@ public class AirTouch5ServiceImpl implements AirTouchService<MessageConstants.Ad
 
         int nextRequestId = counter.incrementAndGet();
         this.responseReceived.put(nextRequestId, Boolean.FALSE);
-        myairtouchConnector.sendRequest(ZoneControlHandler.generateRequest(nextRequestId, null));
+        myairtouchConnector.sendRequest(ZoneStatusHandler.generateRequest(nextRequestId, null));
 
         nextRequestId = counter.incrementAndGet();
         this.responseReceived.put(nextRequestId, Boolean.FALSE);
@@ -93,7 +93,7 @@ public class AirTouch5ServiceImpl implements AirTouchService<MessageConstants.Ad
             return;
         }
         final AirtouchConnector<MessageConstants.Address> myairtouchConnector = this.airtouchConnector;
-        myairtouchConnector.sendRequest(ZoneControlHandler.generateRequest(counter.incrementAndGet(), null));
+        myairtouchConnector.sendRequest(ZoneStatusHandler.generateRequest(counter.incrementAndGet(), null));
         myairtouchConnector.sendRequest(AirConditionerStatusHandler.generateRequest(counter.incrementAndGet()));
     }
 
